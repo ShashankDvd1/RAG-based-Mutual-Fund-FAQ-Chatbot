@@ -1,0 +1,42 @@
+services:
+  # FastAPI Backend — deployed as a Docker web service on Render
+  - type: web
+    name: sbi-mf-faq-api
+    runtime: docker
+    region: singapore
+    plan: free
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+
+    # Environment variables (set secret values in Render dashboard)
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false          # Set manually in Render → Environment
+
+      - key: HF_TOKEN
+        sync: false          # Set manually in Render → Environment
+
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+
+      - key: EMBEDDING_MODEL
+        value: BAAI/bge-small-en-v1.5
+
+      - key: VECTORSTORE_PATH
+        value: ./data/vectorstore
+
+      - key: HOST
+        value: 0.0.0.0
+
+      - key: PORT
+        value: "8000"
+
+      # Allow your Vercel frontend URL — update this after deployment
+      - key: ALLOWED_ORIGINS
+        value: https://your-frontend.vercel.app,http://localhost:3000
+
+    healthCheckPath: /health
+
+    scaling:
+      minInstances: 1
+      maxInstances: 1

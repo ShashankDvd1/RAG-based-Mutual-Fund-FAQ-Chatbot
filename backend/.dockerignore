@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Environment files — never bake secrets into Docker image
+.env
+.env.*
+!.env.example
+
+# Ingestion scripts are not needed in production
+ingestion/
+
+# Development/local scripts and notebooks
+*.ipynb
+scratch/
