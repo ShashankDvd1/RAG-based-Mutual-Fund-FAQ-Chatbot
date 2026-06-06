@@ -33,7 +33,7 @@ services:
 
       # Allow your Vercel frontend URL — update this after deployment
       - key: ALLOWED_ORIGINS
-        value: https://your-frontend.vercel.app,http://localhost:3000
+        value: https://rag-based-mutual-fund-faq-chatbot-kfpxwboaj.vercel.app,http://localhost:3000
 
     healthCheckPath: /health
 
