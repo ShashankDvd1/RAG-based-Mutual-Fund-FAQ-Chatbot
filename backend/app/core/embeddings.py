@@ -25,8 +25,7 @@ def get_embeddings():
             import socket
             socket.getaddrinfo('api-inference.huggingface.co', 443)
         except Exception:
-            print("api-inference.huggingface.co is unresolvable. Using router.huggingface.co fallback...")
-            api_url = f"https://router.huggingface.co/pipeline/feature-extraction/{settings.EMBEDDING_MODEL}"
+            api_url = f"https://router.huggingface.co/hf-inference/models/{settings.EMBEDDING_MODEL}"
 
         api_key = settings.HF_TOKEN.strip() if settings.HF_TOKEN else ""
         return HuggingFaceInferenceAPIEmbeddings(

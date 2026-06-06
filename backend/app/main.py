@@ -22,9 +22,15 @@ app = FastAPI(
 )
 
 # Configure CORS Middleware
+# 1. Read 'ALLOWED_ORIGINS' from Render. If it doesn't exist, default to "*"
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "*")
+
+# 2. Split it by commas in case you have multiple URLs later (e.g. localhost,vercel)
+origins = [origin.strip() for origin in allowed_origins_env.split(",")]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins,
+    allow_origins=origins,  # 3. Pass our new dynamic origins list here!
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
