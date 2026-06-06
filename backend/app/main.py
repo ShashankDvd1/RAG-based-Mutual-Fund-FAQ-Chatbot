@@ -31,6 +31,7 @@ origins = [origin.strip() for origin in allowed_origins_env.split(",")]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,  # 3. Pass our new dynamic origins list here!
+    allow_origin_regex=r"https://rag-based-mutual-fund-faq-chatbot.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
