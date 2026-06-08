@@ -9,7 +9,7 @@ def get_embeddings():
     """
     try:
         import sentence_transformers
-        from langchain_community.embeddings import HuggingFaceEmbeddings
+        from langchain_huggingface import HuggingFaceEmbeddings
         print(f"Loading local embedding model: {settings.EMBEDDING_MODEL} (development mode)...")
         return HuggingFaceEmbeddings(
             model_name=settings.EMBEDDING_MODEL,
