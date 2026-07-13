@@ -2,6 +2,7 @@ import os
 import re
 from bs4 import BeautifulSoup
 import pdfplumber
+from datetime import datetime
 
 class Parser:
     def __init__(self, raw_dir="backend/data/raw"):
@@ -45,7 +46,7 @@ class Parser:
 
         # 2. Extract metadata from markup
         source_url = ""
-        date_accessed = "June 1, 2026"  # Default fallback
+        date_accessed = datetime.now().strftime("%B %d, %Y")  # Default fallback
         
         # Search for metadata in paragraphs
         for p in content_div.find_all("p"):
@@ -107,7 +108,7 @@ class Parser:
                 "source_url": "",  # Default fallback
                 "scheme_name": scheme_name,
                 "document_type": doc_type,
-                "date_accessed": "June 1, 2026",
+                "date_accessed": datetime.now().strftime("%B %d, %Y"),
                 "title": filename,
                 "filename": filename
             }
