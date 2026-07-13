@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional, List
+from datetime import datetime
 from app.services.retriever import get_retriever
 from app.services.chain import get_rag_chain
 from app.services.guardrails import get_guardrails
@@ -68,7 +69,7 @@ async def chat_endpoint(request: ChatRequest):
             source_url=doc.metadata.get("source_url", "https://www.sbimf.com"),
             scheme_name=doc.metadata.get("scheme_name", "General"),
             document_type=doc.metadata.get("document_type", "factsheet"),
-            date_accessed=doc.metadata.get("date_accessed", "June 1, 2026"),
+            date_accessed=doc.metadata.get("date_accessed", datetime.now().strftime("%B %d, %Y")),
             title=doc.metadata.get("title", "SBI Factsheet")
         ))
 

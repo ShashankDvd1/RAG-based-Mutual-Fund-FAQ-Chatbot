@@ -3,6 +3,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from app.core.config import settings
 from typing import List
+from datetime import datetime
 from langchain_core.documents import Document
 
 class RAGChain:
@@ -38,7 +39,7 @@ Rules:
         context_str = ""
         for i, doc in enumerate(context_docs):
             source_url = doc.metadata.get("source_url", "https://www.sbimf.com")
-            date_accessed = doc.metadata.get("date_accessed", "June 1, 2026")
+            date_accessed = doc.metadata.get("date_accessed", datetime.now().strftime("%B %d, %Y"))
             context_str += f"[Document {i+1}]\nMetadata: Source URL={source_url}, Access Date={date_accessed}\nContent: {doc.page_content}\n\n"
 
         response = self.chain.invoke({
