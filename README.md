@@ -4,6 +4,8 @@
 
 ![Tech Stack](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white) ![Groq](https://img.shields.io/badge/Groq_LLaMA-orange?style=flat) ![FAISS](https://img.shields.io/badge/FAISS-blue?style=flat)
 
+**Live Demo (Frontend):** [https://rag-based-mutual-fund-faq-chatbot-sage.vercel.app/](https://rag-based-mutual-fund-faq-chatbot-sage.vercel.app/)  
+**Live API (Backend):** [https://rag-based-mutual-fund-faq-chatbot-ch45.onrender.com/docs](https://rag-based-mutual-fund-faq-chatbot-ch45.onrender.com/docs)
 ---
 
 ## 📌 What This Project Does

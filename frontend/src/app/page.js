@@ -63,7 +63,7 @@ export default function Home() {
       } catch (error) {
         const errorMessage = {
           sender: "bot",
-          text: `⚠️ **Connection Error:** Could not reach the backend API.\n\n${error.message}\n\nPlease make sure the backend server is running at \`localhost:8000\` or check your deployment configuration.`,
+          text: `⚠️ **Connection Error:** Could not reach the backend API.\n\n${error.message}\n\nPlease check your deployment configuration or ensure the backend server is running.`,
           retrieved_chunks: [],
           timestamp: new Date().toISOString(),
           isError: true,

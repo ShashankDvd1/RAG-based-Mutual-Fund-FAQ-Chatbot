@@ -1,4 +1,4 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === "production" ? "https://rag-based-mutual-fund-faq-chatbot-ch45.onrender.com" : "http://127.0.0.1:8000");
 
 /**
  * Sends a query to the FastAPI RAG backend.
