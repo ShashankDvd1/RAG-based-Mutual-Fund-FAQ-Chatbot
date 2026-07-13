@@ -21,16 +21,21 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS Middleware
-# 1. Read 'ALLOWED_ORIGINS' from Render. If it doesn't exist, default to "*"
-allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "*")
+# 1. Provide safe default origins for local dev and the specific Vercel frontend
+default_origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://rag-based-mutual-fund-faq-chatbot-sage.vercel.app"
+]
 
-# 2. Split it by commas in case you have multiple URLs later (e.g. localhost,vercel)
-origins = [origin.strip() for origin in allowed_origins_env.split(",")]
+# 2. Append any origins passed via environment variables
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "")
+if allowed_origins_env and allowed_origins_env != "*":
+    default_origins.extend([o.strip() for o in allowed_origins_env.split(",")])
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,  # 3. Pass our new dynamic origins list here!
+    allow_origins=default_origins,
     allow_origin_regex=r"https://rag-based-mutual-fund-faq-chatbot.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
